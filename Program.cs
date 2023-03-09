@@ -1,16 +1,20 @@
-﻿//Напишите программу, которая на вход принимает число и выдает его квадрат(число, умноженное само на себя)
+﻿//Напишите программу, которая на вход принимает 2 числа и проверяет, является ли первое число квадратом второго
+//a = 2, b =10 > нет
+//a = 9, b = 3 > да
+// и т.д
 
+Console.WriteLine("Введите первое число");
+int first = Convert.ToInt32(  Console.ReadLine()  );
+Console.WriteLine("Введите второе число");
+int second = Convert.ToInt32(  Console.ReadLine()  );
 
-Console.WriteLine("Введите целое число");
-int num = Convert.ToInt32(  Console.ReadLine()  );
-int square = num*num;
-Console.WriteLine("Квадрат введенного числа равен "+ square);
+int square = second*second;
 
-if (num<0)
+if (square == first)
 {
-    Console.WriteLine("Это отрицательное число");
+    Console.WriteLine("Является");
 }
 else
 {
-    Console.WriteLine("Это неотрицательное число");
+     Console.WriteLine("Не является");
 }
