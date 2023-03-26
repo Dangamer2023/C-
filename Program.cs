@@ -23,7 +23,9 @@ Console.WriteLine($"Число {A} в степени {B} = {P}");
 
 void PrintArray(int[] array)
 {
-  
+    foreach (int item in array)
+        Console.Write($"{item} ");
+    Console.WriteLine();
 }
 
 
