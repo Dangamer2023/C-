@@ -4,12 +4,12 @@
 
 2, 4 -> 16*/
 
-Console.WriteLine("Введите первое число");
+/*Console.WriteLine("Введите первое число");
 int A = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Введите второе число");
 int B = Convert.ToInt32(Console.ReadLine());
 int P =  Convert.ToInt32(Math.Pow(A,B));
-Console.WriteLine($"Число {A} в степени {B} = {P}");
+Console.WriteLine($"Число {A} в степени {B} = {P}");*/
 
 
 /*Задача 29: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
@@ -24,7 +24,7 @@ Console.WriteLine($"Число {A} в степени {B} = {P}");
 void PrintArray(int[] array)
 {
     foreach (int item in array)
-        Console.Write($"{item} ");
+        Console.Write($"[{item} ]");
     Console.WriteLine();
 }
 
@@ -33,7 +33,7 @@ void PrintArray(int[] array)
 
 
 int[] array = new int[8];
-
+PrintArray(array);
 
 
 
