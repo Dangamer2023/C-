@@ -1,242 +1,136 @@
-﻿/*Задача 19
+﻿//Здесь будет код с рекурсией
 
-Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом. Через строку решать нельзя.
+//Сумма чисел от 1 до N
 
-14212 -> нет
-
-12821 -> да
-
-23432 -> да*/
-
-void Pallindrom(int number)
+/*int SumFor(int n)
 {
-
-
-int d1 = number / 10000;
-    int d2 = (number / 1000) % 10;
-    int d3 = (number / 100) % 10;
-    int d4 = (number / 10) % 10;
-    int d5 = number % 10;
-if(d1 == d5 && d2 == d4)
-{
-    Console.WriteLine($"{number} -> да");
-
-}
-else
-    Console.WriteLine($"{number} -> нет");
+    int result = 0;
+    for (int i = 1; i <= n; i++) result += i;
+    return result;
 }
 
 
-
-Console.WriteLine("Введите пятизначное число");
-int number = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine($"Ваше число: {number}");
-Pallindrom(number);
-
-
-
-/*Задача 21
-
-/*Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
-
-A (3,6,8); B (2,1,-7), -> 15.84
-
-A (7,-5, 0); B (1,-1,9) -> 11.53*/
-
-void Coordinates()
+int SumRec(int n)
 {
-double aX, aY, aZ, bX, bY, bZ;
+    if (n == 0) return 0;
+    else return n + SumRec(n - 1);
+}
 
-Console.WriteLine("Введите координаты точки A (x,y,z):");
-string[] aStr = Console.ReadLine().Split(',');
-aX = double.Parse(aStr[0]);
-aY = double.Parse(aStr[1]);
-aZ = double.Parse(aStr[2]);
+Console.WriteLine(SumFor(10)); //55
+Console.WriteLine(SumRec(10)); //55
 
-Console.WriteLine("Введите координаты точки B (x,y,z):");
-string[] bStr = Console.ReadLine().Split(',');
-bX = double.Parse(bStr[0]);
-bY = double.Parse(bStr[1]);
-bZ = double.Parse(bStr[2]);
 
-double dist = Math.Sqrt(Math.Pow(aX - bX, 2) + Math.Pow(aY - bY, 2) + Math.Pow(aZ - bZ, 2));
+//Факториал числа
 
-Console.WriteLine("Расстояние между точками: {0:F2}", dist);
+int FactorialFor(int n)
+{
+    int result = 1;
+    for (int i = 1; i <= n; i++) result *= i;
+    return result;
+
 }
 
 
 
-Coordinates();
+int FactorialRec(int n)
+{
+    if (n == 1) return 1;
+    else return n * FactorialRec(n - 1);
+}
+
+Console.WriteLine(FactorialFor(10)); // 3628800
+Console.WriteLine(FactorialRec(10)); // 3628800
 
 
 
+//Вычислить a^n
 
-/*Задача 23
+int PowerFor(int a, int n)
+{
+    int result = 1;
+    for (int i = 1; i <= n; i++) result *= a;
+    return result;
+}
 
-Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
-
-3 -> 1, 8, 27
-5 -> 1, 8, 27, 64, 125*/
 
 
- void Main()
+int PowerRec(int a, int n)
+{
+    //return n == 0 ? 1 : PowerRec(a, n - 1) * a;
+    if (n == 0) return 1;
+    else return PowerRec(a, n - 1) * a;
+}
+
+
+
+Console.WriteLine(PowerFor(2, 10)); // 1024
+Console.WriteLine(PowerRec(2, 10)); // 1024
+
+
+//Посчитаем сумму всех чисел от 1 до N, где N вводится пользователем
+
+int Summa(int num)
+{
+    int sum = 0;
+    while (true)
     {
-        Console.Write("Введите число N: ");
-        int n = int.Parse(Console.ReadLine());
-
-        Console.WriteLine("Таблица кубов чисел от 1 до {0}:", n);
-   
-        for (int i = 1; i <= n; i++)
-        {
-            int cube = i * i * i;
-            Console.Write("{0} ", cube);
-        }
-        Console.WriteLine();
+        if (num == 0) break;
+        sum += num;
+        num = num - 1;
     }
-
-
-Main();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*Задача 25: Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
-
-3, 5 -> 243 (3⁵)
-
-2, 4 -> 16*/
-
-/*Console.WriteLine("Введите первое число");
-int A = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите второе число");
-int B = Convert.ToInt32(Console.ReadLine());
-int P =  Convert.ToInt32(Math.Pow(A,B));
-Console.WriteLine($"Число {A} в степени {B} = {P}");*/
-
-
-/*Задача 29: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
-
-1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
-
-6, 1, 33 -> [6, 1, 33]
-
-
-void FillArray(int[] array)
-{
-    for (int i = 0; i < array.Length; i++)
-        array[i] = new Random().Next(1, 1000);
+    return sum;
 }
 
 
 
-void PrintArray(int[] array)
+int SummaRec(int num)
 {
-    foreach (int item in array)
-        Console.Write($"[{item} ]");
-    Console.WriteLine();
+    if (num == 0) return 0;
+    return num + SummaRec(num - 1);
 }
 
 
 
 
 
-int[] array = new int[8];
-FillArray(array);
-PrintArray(array);*/
+
+Console.WriteLine("Введите натуральное число");
+int num = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine($"Сумма всех целых чисел от 1 до {num} равна {Summa(num)}");
+Console.WriteLine($"Сумма рекурсией всех целых чисел от 1 до {num} равна {SummaRec(num)}");
+
+
+/*Задача 63: Задайте значение N. Напишите программу, которая выведет все натуральные числа в промежутке
+от 1 до N
+
+N = 5 -> "1,2,3,4,5"
+N = 6 -> "1,2,3,4,5,6"*/
+
+
+string NumbersAmount(int Nat)
+{
+    if(Nat == 0) return "";
+    return NumbersAmount(Nat-1)+ " "+Nat;
+}
 
 
 
 
+Console.WriteLine("Введите значение N");
+int Nat = Convert.ToInt32(Console.ReadLine());
+Console.Write(NumbersAmount(Nat));
 
 
 
+/*for (int i = 1; i <= N; i++)
+{
+    Console.WriteLine(i);
+}*/
 
 
 
+/*Задача 63: Задайте значения M и N. Напишите программу, которая выведет все натуральные числа в промежутке
+от M до N
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*Задача 27: Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
-
-452 -> 11
-
-82 -> 10
-
-9012 -> 12*/
-
-/*Задача 29: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
-
-1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
-
-6, 1, 33 -> [6, 1, 33]*/
+M = 1; N = 5 -> "1,2,3,4,5"
+M = 4; N = 8 -> "4,5,6,7,8"*/
